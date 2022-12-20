@@ -1,0 +1,121 @@
+.Sidebar{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-top: 4rem;
+    transition: 300ms ease; /*tt ce qui se passe dans sidebar effet*/
+}
+.bars{
+    display: none;
+  }
+.logo{
+    display: flex;
+    height: 4%;
+    margin-top: 1rem;
+    font-weight: bold;
+    font-size: 20px;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.logo>img{
+    width: 3rem;
+    height: 3rem;
+}
+
+.logo>span>span{
+    color: #b45588;
+}
+
+
+/*css menu sidebar*/
+
+.menu{
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem ;
+}
+
+.menuItem{
+    display: flex;
+    align-items: center;
+    gap: 1rem ; /*espace entre les fils du menu item*/
+    height: 2.5rem;
+    margin-left: 2rem;
+    position: relative;
+    transition: all 300ms ease;
+    font-size: 0.875rem;
+    border-radius: .7rem;
+    
+}
+
+.menuItem:hover{
+    cursor: pointer;
+}
+
+.active{
+    background: var(--activeItem);
+    margin-left: 0;
+}
+.active::before{
+    content: '';
+    width: 8px;
+    height: 100%; 
+    background: #edc2d9;
+    margin-right: calc(1rem-8px);/*le calcul viens de margin left de item menu/2 le resultat moins width active*/
+
+}
+
+.menu .menuItem:last-child{
+    position: absolute;
+    bottom: 2.3rem;
+    width: 100%;
+}
+
+/*responsive*/
+/* Tablets */
+@media screen and (max-width: 1200px) { 
+    .menuItem>span{
+      display: none;
+    }
+    .logo{
+      display: none;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .sidebar{
+      position: fixed;
+      z-index: 9;
+      background: #a8b6ff;
+      width: 55%;
+      padding-right: 1rem;
+      height: 100%;
+    }
+    .menuItem>span{
+      display: block;
+    }
+    .logo{
+      display: flex;
+    }
+    .menu .menuItem:last-child {
+      position: relative;
+      margin-top: 6rem;
+    }
+    .bars{
+      display: flex;
+      position: fixed;
+      top: 2rem;
+      left:60%;
+      background:#6A82FB;
+      padding:10px;
+      border-radius: 10px;
+      z-index: 9;
+    }
+    .close{
+      left: -60%;
+    }
+  }
