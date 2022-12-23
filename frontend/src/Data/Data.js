@@ -23,12 +23,12 @@ export const SidebarData = [
 
     {
         icon: UilClipboardAlt,
-        heading: "Commandes"
+        heading: "Cours"
     },
 
     {
         icon: UilUsersAlt,
-        heading:" Clients"
+        heading:" Enseigniants"
     },
 
     {

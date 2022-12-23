@@ -36,7 +36,7 @@ const Sidebar = () => {
         <div className="logo">
           <img src={Logo} alt="logo" />
           <span>
-            Ca<span>$</span>h
+            Cour<span>$</span>
           </span>
         </div>
   

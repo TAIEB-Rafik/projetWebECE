@@ -66,3 +66,8 @@ export const updateUser = async (req, res) => {
       res.status(403).json("<INFO> Access Denied! ");
     }
   };
+
+
+
+
+  //get all user
