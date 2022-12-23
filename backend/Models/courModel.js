@@ -6,8 +6,7 @@ const courSchema = mongoose.Schema({
     },
     title: String,
     desc: String,
-    likes: [],
-    suivipar: [],
+    note: Number,
     image: String,
 },
     {

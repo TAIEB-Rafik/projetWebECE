@@ -1,100 +1,167 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Auth.css";
 import Logo from "../../imgs/logo.png";
+// import { logIn, signUp } from "../../actions/AuthActions.js";
+// import { useDispatch, useSelector } from "react-redux";
+// import { useNavigate } from "react-router-dom";
 
 const Auth = () => {
+  const initialState = {
+    firstname: "",
+    lastname: "",
+    username: "",
+    password: "",
+    confirmpass: "",
+  };
+  const loading = useSelector((state) => state.authReducer.loading);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [isSignUp, setIsSignUp] = useState(false);
+
+  const [data, setData] = useState(initialState);
+
+  // const [confirmPass, setConfirmPass] = useState(true);
+
+  // const dispatch = useDispatch()
+
+  // Reset Form
+  // const resetForm = () => {
+  //   setData(initialState);
+  //   setConfirmPass(confirmPass);
+  // };
+
+  // handle Change in input
+  // const handleChange = (e) => {
+  //   setData({ ...data, [e.target.name]: e.target.value });
+  // };
+
+  // Form Submission
+  // const handleSubmit = (e) => {
+  //   setConfirmPass(true);
+  //   e.preventDefault();
+  //   if (isSignUp) {
+  //     data.password === data.confirmpass
+  //       ? dispatch(signUp(data, navigate))
+  //       : setConfirmPass(false);
+  //   } else {
+  //     dispatch(logIn(data, navigate));
+  //   }
+  // };
+
   return (
     <div className="Auth">
+      {/* left side */}
+
       <div className="a-left">
         <img src={Logo} alt="" />
+
         <div className="Webname">
-          <h1>Cour$</h1>
-          <h6>veuillez vous connecter</h6>
+          <h1>ELearn</h1>
+          <h6>Explore the ideas throughout the world</h6>
         </div>
       </div>
 
-      <LogIn/>
-    </div>
-  );
-};
+      {/* right form side */}
 
-function LogIn() {
-    return (
       <div className="a-right">
-        <form className="infoForm authForm">
-          <h3>Log In</h3>
-  
+        <form className="infoForm authForm" /*onSubmit={handleSubmit}*/>
+          <h3>{isSignUp ? "Inscription" : "Connexion"}</h3>
+          {isSignUp && (
+            <div>
+              <input
+                required
+                type="text"
+                placeholder="prenom"
+                className="infoInput"
+                name="firstname"
+              // value={data.firstname}
+              // onChange={handleChange}
+              />
+              <input
+                required
+                type="text"
+                placeholder="Nom"
+                className="infoInput"
+                name="lastname"
+              // value={data.lastname}
+              // onChange={handleChange}
+              />
+            </div>
+          )}
+
           <div>
             <input
+              required
               type="text"
               placeholder="Username"
               className="infoInput"
               name="username"
+            // value={data.username}
+            // onChange={handleChange}
             />
           </div>
-  
           <div>
             <input
+              required
               type="password"
               className="infoInput"
-              placeholder="Password"
+              placeholder="Mot de Passe"
               name="password"
+            // value={data.password}
+            // onChange={handleChange}
             />
+            {isSignUp && (
+              <input
+                required
+                type="password"
+                className="infoInput"
+                name="confirmpass"
+                placeholder="Confirmer Mot de Passe"
+              // onChange={handleChange}
+              />
+            )}
           </div>
-  
+
+          <span
+            style={{
+              color: "red",
+              fontSize: "12px",
+              alignSelf: "flex-end",
+              marginRight: "5px",
+              // display: confirmPass ? "none" : "block",
+            }}
+          >
+            *Confirm password is not same
+          </span>
           <div>
-              <span style={{ fontSize: "12px" }}>
-                vous n'avez pas decompte Sign up
-              </span>
-            <button className="button infoButton">Login</button>
+            <span
+              style={{
+                fontSize: "12px",
+                cursor: "pointer",
+                textDecoration: "underline",
+                color: 'linear-gradient(98.63deg, #7a25f9 0%, #f95f35 100%);',
+              }}
+              onClick={() => {
+                // resetForm();
+                setIsSignUp((prev) => !prev);
+              }}
+            >
+              {isSignUp
+                ? "Je me connecte a mon compte"
+                : "Je m'inscrit"}
+            </span>
+            <button
+              className="button infoButton"
+              type="Submit"
+            // disabled={loading}
+            >
+              {/*loading ? "Loading..." : */isSignUp ? "SignUp" : "Login"}
+            </button>
           </div>
         </form>
       </div>
-    );
-  }
-function SignUp() {
-  return (
-    <div className="a-right">
-      <form className="infoForm authForm">
-        <h3>Sign up</h3>
-
-        <div>
-          <input
-            type="text"
-            placeholder="Nom"
-            className="infoInput"
-            name="firstname"
-          />
-          <input
-            type="text"
-            placeholder="Prenom"
-            className="infoInput"
-            name="lastname"
-          />
-        </div>
-
-        <div>
-          <input
-            type="text"
-            className="infoInput"
-            name="password"
-            placeholder="Password"
-          />
-          <input
-            type="text"
-            className="infoInput"
-            name="confirmpass"
-            placeholder="Confirm Password"
-          />
-        </div>
-
-        <div>
-            <span style={{fontSize: '12px'}}>Vous avez deja un compte. Login!</span>
-        </div>
-        <button className="button infoButton" type="Enregistrer">Signup</button>
-      </form>
     </div>
   );
-}
+};
 
 export default Auth;

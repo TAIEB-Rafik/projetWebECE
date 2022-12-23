@@ -94,3 +94,28 @@ export const likeCour = async (req, res) => {
     }
 
 }
+//cour suivi
+// export const followCour = async (req, res) => {
+//     const id = req.params.id;
+  
+//     const { currentUserId } = req.body;
+  
+//     if (currentUserId === id) {
+//       res.status(403).json("Action forbidden");
+//     } else {
+//       try {
+//         const followCour = await UserModel.findById(id);
+//         const followingcour = await UserModel.findById(currentUserId);
+  
+//         if (!followCour.followers.includes(currentUserId)) {
+//           await followCour.updateOne({ $push: { followers: currentUserId } });
+//           await followingcour.updateOne({ $push: { following: id } });
+//           res.status(200).json("cour est suivi <OK>");
+//         } else {
+//           res.status(403).json("cour est deja suivi par vous <OK>");
+//         }
+//       } catch (error) {
+//         res.status(500).json(error);
+//       }
+//     }
+//   };

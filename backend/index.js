@@ -19,7 +19,7 @@ mongoose.connect(process.env.MONGO_DB,
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).
-then(()=>app.listen(process.env.PORT,console.log(`<INFO> listning at ${5000} ...`)))
+then(()=>app.listen(process.env.PORT,console.log(`<INFO [ok]> listning at ${process.env.PORT} ...`)))
 .catch((error)=>console.log(error))
 
 
