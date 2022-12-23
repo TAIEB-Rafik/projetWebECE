@@ -8,7 +8,7 @@ const Auth = () => {
       <div className="a-left">
         <img src={Logo} alt="" />
         <div className="Webname">
-          <h1>Shop</h1>
+          <h1>Cour$</h1>
           <h6>veuillez vous connecter</h6>
         </div>
       </div>

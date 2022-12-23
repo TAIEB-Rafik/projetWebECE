@@ -25,4 +25,5 @@ then(()=>app.listen(process.env.PORT,console.log(`<INFO> listning at ${5000} ...
 
 //routage 
 app.use('/auth', AuthRoute)
-app.use('/user', UserRoute)
+app.use('/users', UserRoute)
+app.use('/cours',CourRoute)
