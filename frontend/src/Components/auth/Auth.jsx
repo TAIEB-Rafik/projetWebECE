@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import "./Auth.css";
 import Logo from "../../imgs/logo.png";
-// import { logIn, signUp } from "../../actions/AuthActions.js";
-// import { useDispatch, useSelector } from "react-redux";
-// import { useNavigate } from "react-router-dom";
+import { logIn, signUp } from "../../actions/AuthAction";
+import { useDispatch, useSelector } from "react-redux";
+
+ import { useNavigate } from "react-router-dom";
 
 const Auth = () => {
   const initialState = {
@@ -13,40 +14,40 @@ const Auth = () => {
     password: "",
     confirmpass: "",
   };
-  const loading = useSelector((state) => state.authReducer.loading);
+  // const loading = useSelector((state) => state.authReducer.loading);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [isSignUp, setIsSignUp] = useState(false);
 
   const [data, setData] = useState(initialState);
 
-  // const [confirmPass, setConfirmPass] = useState(true);
+  const [confirmPass, setConfirmPass] = useState(true);
 
-  // const dispatch = useDispatch()
+  //const dispatch = useDispatch()
 
   // Reset Form
-  // const resetForm = () => {
-  //   setData(initialState);
-  //   setConfirmPass(confirmPass);
-  // };
+  const resetForm = () => {
+    setData(initialState);
+    setConfirmPass(confirmPass);
+  };
 
   // handle Change in input
-  // const handleChange = (e) => {
-  //   setData({ ...data, [e.target.name]: e.target.value });
-  // };
+  const handleChange = (e) => {
+    setData({ ...data, [e.target.name]: e.target.value });
+  };
 
   // Form Submission
-  // const handleSubmit = (e) => {
-  //   setConfirmPass(true);
-  //   e.preventDefault();
-  //   if (isSignUp) {
-  //     data.password === data.confirmpass
-  //       ? dispatch(signUp(data, navigate))
-  //       : setConfirmPass(false);
-  //   } else {
-  //     dispatch(logIn(data, navigate));
-  //   }
-  // };
+  const handleSubmit = (e) => {
+    setConfirmPass(true);
+    e.preventDefault();// pour ne pas etre rediçriger
+    if (isSignUp) {
+      data.password === data.confirmpass
+        ? dispatch(signUp(data, navigate)) //Dispatch lance des action
+        : setConfirmPass(false);
+    } else {
+      dispatch(logIn(data, navigate));
+    }
+  };
 
   return (
     <div className="Auth">
@@ -64,7 +65,7 @@ const Auth = () => {
       {/* right form side */}
 
       <div className="a-right">
-        <form className="infoForm authForm" /*onSubmit={handleSubmit}*/>
+        <form className="infoForm authForm" onSubmit={handleSubmit}>
           <h3>{isSignUp ? "Inscription" : "Connexion"}</h3>
           {isSignUp && (
             <div>
@@ -74,17 +75,18 @@ const Auth = () => {
                 placeholder="prenom"
                 className="infoInput"
                 name="firstname"
-              // value={data.firstname}
-              // onChange={handleChange}
+                value={data.firstname}
+                onChange={handleChange}
               />
+
               <input
                 required
                 type="text"
                 placeholder="Nom"
                 className="infoInput"
                 name="lastname"
-              // value={data.lastname}
-              // onChange={handleChange}
+                value={data.lastname}
+                onChange={handleChange}
               />
             </div>
           )}
@@ -96,8 +98,8 @@ const Auth = () => {
               placeholder="Username"
               className="infoInput"
               name="username"
-            // value={data.username}
-            // onChange={handleChange}
+              value={data.username}
+              onChange={handleChange}
             />
           </div>
           <div>
@@ -107,8 +109,8 @@ const Auth = () => {
               className="infoInput"
               placeholder="Mot de Passe"
               name="password"
-            // value={data.password}
-            // onChange={handleChange}
+              value={data.password}
+              onChange={handleChange}
             />
             {isSignUp && (
               <input
@@ -117,7 +119,7 @@ const Auth = () => {
                 className="infoInput"
                 name="confirmpass"
                 placeholder="Confirmer Mot de Passe"
-              // onChange={handleChange}
+                onChange={handleChange}
               />
             )}
           </div>
@@ -128,10 +130,10 @@ const Auth = () => {
               fontSize: "12px",
               alignSelf: "flex-end",
               marginRight: "5px",
-              // display: confirmPass ? "none" : "block",
+              display: confirmPass ? "none" : "block",
             }}
           >
-            *Confirm password is not same
+            *Verifier vos MotDePasse
           </span>
           <div>
             <span
@@ -142,7 +144,7 @@ const Auth = () => {
                 color: 'linear-gradient(98.63deg, #7a25f9 0%, #f95f35 100%);',
               }}
               onClick={() => {
-                // resetForm();
+                resetForm();
                 setIsSignUp((prev) => !prev);
               }}
             >
