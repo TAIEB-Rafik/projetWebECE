@@ -156,7 +156,7 @@ const Auth = () => {
             <button
               className="button infoButton"
               type="Submit"
-            // disabled={loading}
+            disabled={loading}
             >
               {loading ? "Loading..." : isSignUp ? "SignUp" : "Login"}
             </button>
