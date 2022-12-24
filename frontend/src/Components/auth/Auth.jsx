@@ -14,7 +14,7 @@ const Auth = () => {
     password: "",
     confirmpass: "",
   };
-  // const loading = useSelector((state) => state.authReducer.loading);
+  const loading = useSelector((state) => state.authReducer.loading);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [isSignUp, setIsSignUp] = useState(false);
@@ -119,6 +119,7 @@ const Auth = () => {
                 className="infoInput"
                 name="confirmpass"
                 placeholder="Confirmer Mot de Passe"
+                value={data.confirmpass}
                 onChange={handleChange}
               />
             )}
@@ -157,7 +158,7 @@ const Auth = () => {
               type="Submit"
             // disabled={loading}
             >
-              {/*loading ? "Loading..." : */isSignUp ? "SignUp" : "Login"}
+              {loading ? "Loading..." : isSignUp ? "SignUp" : "Login"}
             </button>
           </div>
         </form>
