@@ -1,5 +1,4 @@
 import axios from "axios";
-import { login } from "../actions/AuthAction";
 const API = axios.create({ baseURL: "http://localhost:5000" });
 
 //apples
