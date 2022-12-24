@@ -1,11 +1,20 @@
 
 import React, { useState } from "react";
+//import {useDispatch} from "react-redux";
 import "./Auth.css";
 import Logo from "../../imgs/logo.png";
 
 const Auth = () => {
   const [isSignUp, setIsSignUp] = useState(true)
-  const [data, setData] = useState({firstname:"", lastname:"", password:"",confirmpass:"", username:""})
+  //const dispatch = useDispatch()
+  const [data, setData] = useState({
+    firstname:"",
+    lastname:"",
+    password:"",
+    confirmpass:"",
+    username:""
+  })
+
   const [confirmPass,setConfirmPass]=useState(true)
   const handleChange = (e)=> {
     setData({...data, [e.target.name]:e.target.value})
@@ -18,6 +27,17 @@ const Auth = () => {
         setConfirmPass(false)
       }
     }
+  }
+
+  const restForm = ()=>{
+    setConfirmPass(true)
+    setData({
+      firstname:"",
+    lastname:"",
+    password:"",
+    confirmpass:"",
+    username:""
+    })
   }
   
   return (
@@ -42,6 +62,7 @@ const Auth = () => {
           placeholder="First Name"
           className="infoInput"
           name="firstname"
+          value={data.firstname}
           onChange = {handleChange}
         />
         <input
@@ -49,6 +70,7 @@ const Auth = () => {
           placeholder="Last Name"
           className="infoInput"
           name="lastname"
+          value={data.lastname}
           onChange = {handleChange}
         />
       </div>
@@ -60,6 +82,7 @@ const Auth = () => {
             className="infoInput"
             name="username"
             placeholder="Usernames"
+            value={data.username}
             onChange = {handleChange}
           />
         </div>
@@ -70,6 +93,7 @@ const Auth = () => {
             className="infoInput"
             name="password"
             placeholder="Password"
+            value={data.password}
             onChange = {handleChange}
           />
           {isSignUp&&
@@ -78,6 +102,7 @@ const Auth = () => {
             className="infoInput"
             name="confirmpass"
             placeholder="Confirm Password"
+            value={data.confirmpass}
             onChange = {handleChange}
           />}
         </div>
@@ -94,7 +119,7 @@ const Auth = () => {
 
         <div>
             <span style={{fontSize: '12px',color: "#2b4df8", cursor:"pointer"}}
-             onClick={()=>setIsSignUp((prev)=>!prev)}>
+             onClick={()=>{setIsSignUp((prev)=>!prev);restForm()}}>
               {
               isSignUp ?"J'ai un compte!"
               :" Je cree un Compte"
