@@ -26,6 +26,7 @@ const Product = ({
 }) => {
   const theme = useTheme();
   const [isExpanded, setIsExpanded] = useState(false);
+  console.log(description)
 
   return (
     <Card
@@ -59,7 +60,7 @@ const Product = ({
           size="small"
           onClick={() => setIsExpanded(!isExpanded)}
         >
-          See More
+          Plus
         </Button>
       </CardActions>
       <Collapse
@@ -72,12 +73,12 @@ const Product = ({
       >
         <CardContent>
           <Typography>id: {_id}</Typography>
-          <Typography>Supply Left: {supply}</Typography>
+          <Typography>Stockage restant: {supply}</Typography>
           <Typography>
-            Yearly Sales This Year: {stat.yearlySalesTotal}
+            Ventes Annueles cette années {stat.yearlySalesTotal}
           </Typography>
           <Typography>
-            Yearly Units Sold This Year: {stat.yearlyTotalSoldUnits}
+            Unite annuelle vendu cette années {stat.yearlyTotalSoldUnits}
           </Typography>
         </CardContent>
       </Collapse>
@@ -130,7 +131,7 @@ const Products = () => {
           )}
         </Box>
       ) : (
-        <>Loading...</>
+        <>Chargement...</>
       )}
     </Box>
   );
