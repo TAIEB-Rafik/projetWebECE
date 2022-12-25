@@ -39,39 +39,39 @@ const navItems = [
     icon: <HomeOutlined />,
   },
   {
-    text: "Client Facing",
+    text: "A propos Clients",
     icon: null,
   },
   {
-    text: "Products",
+    text: "Produits",
     icon: <ShoppingCartOutlined />,
   },
   {
-    text: "Customers",
+    text: "Clients",
     icon: <Groups2Outlined />,
   },
   {
-    text: "Transactions",
+    text: "Transaction",
     icon: <ReceiptLongOutlined />,
   },
   {
-    text: "Geography",
+    text: "Géographie",
     icon: <PublicOutlined />,
   },
   {
-    text: "Sales",
+    text: "Ventes",
     icon: null,
   },
   {
-    text: "Overview",
+    text: "Aperçu",
     icon: <PointOfSaleOutlined />,
   },
   {
-    text: "Daily",
+    text: "Par Jour",
     icon: <TodayOutlined />,
   },
   {
-    text: "Monthly",
+    text: "Par Mois",
     icon: <CalendarMonthOutlined />,
   },
   {
@@ -83,7 +83,7 @@ const navItems = [
     icon: null,
   },
   {
-    text: "Admin",
+    text: "Administrateur",
     icon: <AdminPanelSettingsOutlined />,
   },
   {
@@ -132,7 +132,7 @@ const Sidebar = ({
               <FlexBetween color={theme.palette.secondary.main}>
                 <Box display="flex" alignItems="center" gap="0.5rem">
                   <Typography variant="h4" fontWeight="bold">
-                    ECOMVISION
+                   MyEcomVision
                   </Typography>
                 </Box>
                 {!isNonMobile && (
