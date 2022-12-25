@@ -1,7 +1,7 @@
 # client port 3000
-# Serveur port 5000
+# Serveur port 5001
 
-# admin Login admin@gmail.com
-# admin mot de passe: admin
+# AdminDashboard
+# template de base sur mui.com
 
-# pour ce rendre au dashboard faut ce connecter en tant que admin
+#
